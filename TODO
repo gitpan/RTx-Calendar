@@ -1,1 +1,9 @@
-* ical output
+TODO
+
+nothing for the moment
+
+ALREADY DONE
+
+  * (ymmv)  ICal feeds
+  * (chaka) put the results of a Query Builder search on a calendar
+  * (chaka) link from MyCalendar should automatically go to Calendar.html with filter set to Owner=CurrentUser

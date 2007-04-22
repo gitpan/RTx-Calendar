@@ -1,0 +1,185 @@
+<%args>
+$Month => (localtime)[4]
+$Year => (localtime)[5] + 1900
+$Query => undef
+$Format => undef
+$Order => undef
+$OrderBy => undef
+$RowsPerPage => undef
+</%args>
+
+<& /Elements/Header, Title => $title &>
+<& /Ticket/Elements/Tabs, 
+    current_tab => "Search/Calendar.html$QueryString",
+    Title => $title &>
+<&| /Widgets/TitleBox,
+     title => loc('Calendar for ') . $rtdate->GetMonth($Month) . " $Year" ,
+     title_class=> 'inverse',
+     color => "#993333" &>
+
+% my @options;
+% push @options, "Query=$Query"
+%   if $Query;
+% my $options = "&" . join("&", @options) if @options;
+
+<table width="100%">
+<tr>
+<td align="left">
+% my ($PMonth, $PYear) = ($Month - 1, $Year);
+% if ($PMonth < 0) {
+%    $PYear--;
+%    $PMonth = 11;
+% }
+<a href="<%$RT::WebPath%>/Search/Calendar.html?Month=<%$PMonth%>&Year=<%$PYear%><%$options%>">«<%$rtdate->GetMonth($PMonth)%></a>
+</td>
+<td align="center">
+<a href="<%$RT::WebPath%>/Prefs/Calendar.html">Calendar Preferences</a>
+</td>
+<td align="right">
+% my ($NMonth, $NYear) = ($Month + 1, $Year);
+% if ($NMonth > 11) {
+%    $NYear++;
+%    $NMonth = 0;
+% }
+<a href="<%$RT::WebPath%>/Search/Calendar.html?Month=<%$NMonth%>&Year=<%$NYear%><%$options%>"><%$rtdate->GetMonth($NMonth)%>»</a>
+</td>
+</tr>
+</table>
+
+<table class="rtxcalendar">
+<thead>
+<tr>
+<th></th>
+% for (1 .. 6, 0) {
+<th width="14%"><%$rtdate->GetWeekday($_)%></th>
+% }
+</tr>
+</thead>
+<tbody>
+<tr>
+% while ($date <= $end) {
+%   if ( $date->day_of_week == 1) {
+<th><% $date->week_number %></th>
+%   }
+<td class="<% $date->month != ($Month + 1) ? 'oddline' : '' %>"
+    style="width:14%;<%  DateTime->compare($today, $date) == 0 ? 'background:#f6f7f8;' : '' %>"
+>
+<p class="date"><%$date->day%></p>
+% for my $t (@{ $Tickets{$date->strftime("%F")} }) {
+<& /Elements/CalendarEvent, Object => $t, Date => $date &>
+% }
+</td>
+% $date = $set->next($date);
+% if ( $date->day_of_week == 1) {
+</tr><tr>
+% }
+% }
+</tr>
+</tbody>
+</table>
+
+<table width="100%">
+<tr>
+<td align="left">
+<a href="<%$RT::WebPath%>/Search/Calendar.html?Month=<%$PMonth%>&Year=<%$PYear%><%$options%>">«<%$rtdate->GetMonth($PMonth)%></a>
+</td>
+<td align="right">
+<a href="<%$RT::WebPath%>/Search/Calendar.html?Month=<%$NMonth%>&Year=<%$NYear%><%$options%>"><%$rtdate->GetMonth($NMonth)%>»</a>
+</td>
+</tr>
+</table>
+
+
+<table width="100%">
+<tr>
+<td valign="top" align="center" width="80%">
+<form action="<%$RT::WebPath%>/Search/Calendar.html" method="post">
+
+<select name="Month">
+% for (0..11) {
+<option value="<%$_%>" <% $_ == $Month ? 'selected' : ''%> ><%$rtdate->GetMonth($_)%></option>
+% }
+</select>
+% my $year = (localtime)[5] + 1900;
+<select name="Year">
+% for ( ($year-5) .. ($year+5)) {
+<option value="<%$_%>" <% $_ == $Year ? 'selected' : ''%>><%$_%></option>
+% }
+</select>
+
+<& /Elements/Submit&>
+</form>
+</td>
+<td valign="top" width="50%" align="right">
+% # <img src="<%$RT::WebImagesURL%>/arrow_from.png" /> : <&|/l&>Created</&><br />
+<img src="<%$RT::WebImagesURL%>/arrow_to.png" /> : <&|/l&>Due</&><br />
+% # <img src="<%$RT::WebImagesURL%>/arrow_bw.png" /> : <&|/l&>Created</&>, <&|/l&>Due</&><br />
+<img src="<%$RT::WebImagesURL%>/reminder.png" /> : <&|/l&>Reminders</&><br />
+
+</td>
+</table>
+
+</&>
+
+</html>
+<%INIT>
+
+use RTx::Calendar;
+
+my $title = loc("Calendar");
+
+my $rtdate = RT::Date->new($session{'CurrentUser'});
+
+my $today = DateTime->today;
+my $date  = RTx::Calendar::FirstMonday($Year, $Month + 1);
+my $end   = RTx::Calendar::LastSunday($Year, $Month + 1);
+
+# use this to loop over days until $end
+my $set = DateTime::Set->from_recurrence(
+    next => sub { $_[0]->truncate( to => 'day' )->add( days => 1 ) }
+);
+
+my $QueryString;
+$QueryString = '?'
+      . $m->comp(
+        '/Elements/QueryString',
+        Query   => $Query,
+        Format  => $Format,
+        Order   => $Order,
+        OrderBy => $OrderBy,
+        Rows    => $RowsPerPage
+      )
+      if ($Query);
+
+my $Tickets = RT::Tickets->new($session{'CurrentUser'});
+
+if ($Query) {
+  $Tickets->FromSQL($Query)
+
+  # How can I add limit date to FromSQL ?
+  # $Tickets->LimitDue(OPERATOR => ">=", VALUE => $date->strftime("%F") );
+  # $Tickets->LimitDue(OPERATOR => "<=", VALUE => $end->strftime("%F") );
+} else {
+  $Tickets->LimitStatus( VALUE => 'open' );
+  $Tickets->LimitStatus ( VALUE => 'new');
+  $Tickets->LimitStatus ( VALUE => 'stalled');
+
+  $Tickets->LimitOwner(VALUE => $session{CurrentUser}->Id);
+  $Tickets->LimitOwner(VALUE => "Nobody");
+
+  $Tickets->LimitType(VALUE => 'reminder');
+  $Tickets->LimitType(VALUE => 'ticket');
+
+  # Is it a good idea ? Should be way faster
+  $Tickets->LimitDue(OPERATOR => ">=", VALUE => $date->strftime("%F") );
+}
+
+my %Tickets;
+
+while ( my $Ticket = $Tickets->Next()) {
+  # if reminder, check it's refering to a ticket
+  push @{ $Tickets{ RTx::Calendar::LocalDate($Ticket->DueObj->Unix) } }, $Ticket
+    unless $Ticket->Type eq 'reminder' and not $Ticket->RefersTo->First;
+}
+
+</%INIT>

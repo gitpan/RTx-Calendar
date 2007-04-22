@@ -1,0 +1,77 @@
+<%args>
+$Date => undef
+$Object => undef
+</%args>
+<div class="tooltip">
+<small>
+
+% # if ($IsReminder and LocalDate($Object->DueObj->Unix) eq $Date->strftime("%F")) {
+% # <img src="<%$RT::WebImagesURL%>/reminder.png" />
+% # } elsif (LocalDate($Object->DueObj->Unix) eq $Date->strftime("%F") and LocalDate($Object->CreatedObj->Unix) eq $Date->strftime("%F") ) {
+% # <img src="<%$RT::WebImagesURL%>/arrow_bw.png" />
+% # } elsif (LocalDate($Object->DueObj->Unix) eq $Date->strftime("%F")) {
+% # <img src="<%$RT::WebImagesURL%>/arrow_to.png" />
+% # } elsif (LocalDate($Object->CreatedObj->Unix) eq $Date->strftime("%F")) {
+% # <img src="<%$RT::WebImagesURL%>/arrow_from.png" />
+% # }
+
+% if ($IsReminder) {
+<img src="<%$RT::WebImagesURL%>/reminder.png" />
+% } else {
+<img src="<%$RT::WebImagesURL%>/arrow_to.png" />
+% }
+
+	<a href="<%$RT::WebPath%>/Ticket/Display.html?id=<%$TicketId%>">
+           <% $Object->QueueObj->Name %> #<% $TicketId %>
+           <% length($Object->Subject) > 80 ? substr($Object->Subject, 0, 77) . "..." : $Object->Subject %></a></small><br />
+	<span class="tip">
+	<a href="<%$RT::WebPath%>/Ticket/Display.html?id=<%$TicketId%>">
+           <% $Object->QueueObj->Name %> #<% $TicketId %>
+        </a>
+	:</strong> <% $subject%><br />
+	<br />
+	<strong><&|/l&>Owner</&>:</strong> <%$Object->OwnerObj->Name %><br />
+	<strong><&|/l&>Created</&>:</strong> <%$Object->CreatedObj->AsString %><br />
+        <strong><&|/l&>Due</&>:</strong> <% $Object->DueObj->Unix > 0 ? $Object->DueObj->AsString : '-' %><br />
+
+% unless ($IsReminder) {
+	<strong><&|/l&>Status</&>:</strong> <%loc($Object->Status) %><br />
+	<strong><&|/l&>Priority</&>:</strong> <%$Object->Priority %><br />
+	<strong><&|/l&>Requestors</&>:</strong> 
+
+%   my $members = $Object->Requestors->MembersObj;
+%   if ($members->Count == 0) {
+<&|/l&>none</&>
+%   } else {
+%     my @requestors;
+%     while (my $watcher = $members->Next) {
+%       push @requestors, $watcher->MemberObj->Object->Name;
+%     }
+<% join ", ", @requestors %>
+%   }
+<br />
+% }
+	</span>
+</div>
+
+<%init>
+# use RTx::Calendar;
+
+my $TicketId;
+
+my $ticket;
+my $subject;
+my $IsReminder;
+
+if ($Object->Type eq 'reminder') {
+    $IsReminder = 1;
+    if ($Object->RefersTo->First) {
+	$ticket   = $Object->RefersTo->First->TargetObj;
+	$TicketId = $ticket->Id;
+	$subject = $Object->Subject . " (" . $ticket->Subject . ")";
+    }
+} else {
+    $TicketId = $Object->Id;
+    $subject = $Object->Subject;
+}
+</%init>
