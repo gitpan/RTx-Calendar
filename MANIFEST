@@ -1,3 +1,4 @@
+ChangeLog
 CHANGES
 html/Callbacks/RTx-Calendar/Elements/Header/Head
 html/Callbacks/RTx-Calendar/Ticket/Elements/Tabs/Default
@@ -6,10 +7,15 @@ html/Elements/CalendarEvent
 html/Elements/MyCalendar
 html/NoAuth/Calendar/dhandler
 html/NoAuth/css/calendar.css
-html/NoAuth/images/arrow_bw.png
-html/NoAuth/images/arrow_from.png
-html/NoAuth/images/arrow_to.png
+html/NoAuth/images/created.png
+html/NoAuth/images/created_due.png
+html/NoAuth/images/due.png
 html/NoAuth/images/reminder.png
+html/NoAuth/images/resolved.png
+html/NoAuth/images/started.png
+html/NoAuth/images/starts.png
+html/NoAuth/images/starts_due.png
+html/NoAuth/images/updated.png
 html/Prefs/Calendar.html
 html/Prefs/Elements/CalendarFeed
 html/Search/Calendar.html
@@ -27,4 +33,5 @@ Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
+t/01pod.t
 TODO

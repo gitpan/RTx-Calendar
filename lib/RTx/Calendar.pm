@@ -4,7 +4,7 @@ use strict;
 use DateTime;
 use DateTime::Set;
 
-our $VERSION = "0.03";
+our $VERSION = "0.04";
 
 sub FirstMonday {
     my ($year, $month) = (shift, shift);
@@ -31,13 +31,76 @@ sub LastSunday {
     $day;
 }
 
-# we can't use RT::Date::Date because it use gmtime
-# and we need 
+# we can't use RT::Date::Date because it uses gmtime
+# and we need localtime
 sub LocalDate {
   my $ts = shift;
   my ($d,$m,$y) = (localtime($ts))[3..5];
   sprintf "%4d-%02d-%02d", ($y + 1900), ++$m, $d;
 }
+
+sub DatesClauses {
+    my ($Dates, $begin, $end) = @_;
+
+    my $clauses = "";
+
+    my @DateClauses = map {
+	"($_ >= '" . $begin . "' AND $_ <= '" . $end . "')"
+    } @$Dates;
+    $clauses  .= " AND " . " ( " . join(" OR ", @DateClauses) . " ) "
+	if @DateClauses;
+
+    return $clauses
+}
+
+sub FindTickets {
+    my ($CurrentUser, $Query, $Dates, $begin, $end) = @_;
+
+    $Query .= DatesClauses($Dates, $begin, $end)
+	if $begin and $end;
+
+    my $Tickets = RT::Tickets->new($CurrentUser);
+    $Tickets->FromSQL($Query);
+
+    my %Tickets;
+    my %AlreadySeen;
+
+    while ( my $Ticket = $Tickets->Next()) {
+
+	# How to find the LastContacted date ?
+	for my $Date (@$Dates) {
+	    my $DateObj = $Date . "Obj";
+	    push @{ $Tickets{ LocalDate($Ticket->$DateObj->Unix) } }, $Ticket
+		# if reminder, check it's refering to a ticket
+		unless ($Ticket->Type eq 'reminder' and not $Ticket->RefersTo->First)
+		    or $AlreadySeen{  LocalDate($Ticket->$DateObj->Unix) }{ $Ticket }++;
+	}
+    }
+    return %Tickets;
+}
+
+# 
+# Take a user object and return the search with Description "calendar" if it exists
+# 
+sub SearchDefaultCalendar {
+    my $CurrentUser = shift;
+    my $Description = "calendar";
+
+    # I'm quite sure the loop isn't usefull but...
+    my @Objects = $CurrentUser->UserObj;
+    for my $object (@Objects) {
+	next unless ref($object) eq 'RT::User' && $object->id == $CurrentUser->Id;
+	my @searches = $object->Attributes->Named('SavedSearch');
+	for my $search (@searches) {
+	    next if ($search->SubValue('SearchType')
+			 && $search->SubValue('SearchType') ne 'Ticket');
+
+	    return $search
+		if "calendar" eq $search->Description;
+	}
+    }
+}
+
 
 1;
 
@@ -49,7 +112,7 @@ RTx::Calendar - Calendar for RT due tasks
 
 =head1 VERSION
 
-This document describes version 0.03 of RTx::Calendar
+This document describes version 0.04 of RTx::Calendar
 
 =head1 DESCRIPTION
 
@@ -70,11 +133,22 @@ http://gaspard.mine.nu/dotclear/index.php?tag/rtx-calendar
 
 If you upgrade from 0.02, see next part before.
 
+You need to install those three modules :
+
+  * Date::ICal
+  * Data::ICal
+  * DateTime::Set
+
 Install it like a standard perl module
 
  perl Makefile.PL
  make
  make install
+
+If your RT is not in the default path (/opt/rt3) you must set RTHOME
+before doing the Makefile.PL
+
+=head1 CONFIGURATION
 
 To use MyCalendar portlet you must add MyCalendar to
 $HomepageComponents in etc/RT_SiteConfig.pm like that :
@@ -85,12 +159,9 @@ $HomepageComponents in etc/RT_SiteConfig.pm like that :
 To enable private searches ICal feeds, you need to give
 CreateSavedSearch and LoadSavedSearch rights to your users.
 
-=head1 ADVANCED USAGE
+=head1 USAGE
 
-If you want to see reminders in a search you need to go in the
-"advanced" tab of the query builder and add something like that :
-
-  AND ( Type = 'ticket' OR Type = 'reminder' )
+A small help section is available in /Prefs/Calendar.html
 
 =head1 UPGRADE FROM 0.02
 
@@ -99,9 +170,6 @@ to delete old files manually. Go in RTHOME/share/html (by default
 /opt/rt3/share/html) and delete those files :
 
   rm -rf Callbacks/RTx-Calendar
-  rm NoAuth/images/arrow*.png
-  rm NoAuth/css/calendar.css
-  rm Elements/MyCalendar
   rm Tools/Calendar.html
 
 RTx-Calendar may work without this but it's not very clean.

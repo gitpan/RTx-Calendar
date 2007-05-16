@@ -15,11 +15,36 @@ $HiddenField => undef
 
 <&| /Widgets/TitleBox, title => 'Help' &>
 
-<p>If you want to have reminders in a search you need to go in the
-"advanced" tab of the query builder and add something like that :
+<h3>displaying reminders :</h3>
+<p>If you want to have reminders in a search you need to go in the <a
+href="<%$RT::WebPath%>/Search/Edit.html"><%loc("Edit Query")%></a> tab
+of the <%loc("query builder")%> and add something like that :
 
-<code>AND ( Type = 'ticket' OR Type = 'reminder' )</code>
+ <pre>
+   AND ( Type = 'ticket' OR Type = 'reminder' )
+</pre>
 </p>
+
+<h3>displaying other kind of dates :</h3>
+<p>By default RTx::Calendar display Due and Starts dates. You can
+select other kind of events you want with the <%loc("Display
+Columns")%> section in the <a
+href="<%$RT::WebPath%>/Search/Build.html"><%loc("Query
+Builder")%></a>. The following one will display the two latter and
+LastUpdated dates :
+
+<pre>
+  '&lt;small&gt;__Due__&lt;/small&gt;',
+  '&lt;small&gt;__Starts__&lt;/small&gt;',
+  '&lt;small&gt;__LastUpdated__&lt;/small&gt;'
+</pre>
+</p>
+
+<h3>changing the default query :</h3>
+<p>You can change the default Query of Calendar.html and MyCalendar
+portlet by saving a query with the name <code>calendar</code> in the
+<a href="<%$RT::WebPath%>/Search/Build.html"><%loc("Query
+Builder")%></a>.</p>
 
 </&>
 
@@ -30,8 +55,8 @@ $HiddenField => undef
 
 % my $search_count;
 
-%   # FIXME : _PrivacyObjects is a private method. Another way to find searches ?
-%   my @Objects = RT::SavedSearches->new($session{CurrentUser})->_PrivacyObjects;
+%   # I'm quite sure the loop isn't usefull but...
+%   my @Objects = $session{CurrentUser}->UserObj;
 %   for my $object (@Objects) {
 %     next unless ref($object) eq 'RT::User' && $object->id == $session{'CurrentUser'}->Id;
 %     my @searches = $object->Attributes->Named('SavedSearch');
@@ -83,7 +108,7 @@ $AllowSearch = 1
 my $object;
 
 if ($HiddenField eq 'Private') {
-   $object = $session{CurrentUser};
+   $object = $session{CurrentUser}->UserObj;
 } elsif ($AllowSearch and my ($SearchId) = $HiddenField =~ m/SavedSearch\-(\d+)/) {
     $object = $session{CurrentUser}->Attributes->WithId($SearchId);
 }
@@ -91,7 +116,7 @@ if ($HiddenField eq 'Private') {
 if (defined $ChangeURL) {
   my @args = $object->SetAttribute(Name => 'ICalURL', Content => Digest::SHA1::sha1_base64(time));
 } elsif (defined $ResetURL) {
-  $object->DeleteAttribute('ICalURL');
+  my @args = $object->DeleteAttribute('ICalURL');
 }
 
 

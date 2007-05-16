@@ -19,7 +19,7 @@
 <td>
 <p class="date"><%$date->day%></p>
 % for my $t (@{ $Tickets{$date->strftime("%F")} }) {
-<& /Elements/CalendarEvent, Object => $t, Date => $date &>
+<& /Elements/CalendarEvent, Object => $t, Date => $date, DateTypes => \%DateTypes &>
 % }
 </td>
 % $date = $set->next($date);
@@ -38,37 +38,41 @@ my $title = loc("Calendar");
 
 my $rtdate = RT::Date->new($session{'CurrentUser'});
 
+my @DateTypes = qw/Created Starts Started Due LastUpdated Resolved/;
+
 my $today = DateTime->today;
-my $begin = DateTime->today->subtract( days => 3);
-my $end   = DateTime->today->add( days => 3);
+
+# this line is used to debug MyCalendar
+# $today = DateTime->new(year => 2007, month => 4, day => 11);
+
+my $begin = $today->clone->subtract( days => 3);
+my $end   = $today->clone->add( days => 3);
 
 # use this to loop over days until $end
 my $set = DateTime::Set->from_recurrence(
     next => sub { $_[0]->truncate( to => 'day' )->add( days => 1 ) }
 );
 
-my @Tickets;
+my $Query = "( Status = 'new' OR Status = 'open' OR Status = 'stalled')
+ AND ( Owner = '" . $session{CurrentUser}->Id ."' OR Owner = 'Nobody'  )
+ AND ( Type = 'reminder' OR 'Type' = 'ticket' )";
+my $Format = "__Starts__ __Due__";
 
-my $Tickets = RT::Tickets->new($session{'CurrentUser'});
-$Tickets->LimitStatus( VALUE => 'open' );
-$Tickets->LimitStatus ( VALUE => 'new');
-$Tickets->LimitStatus ( VALUE => 'stalled');
-
-$Tickets->LimitOwner(VALUE => $session{'CurrentUser'}->Id);
-$Tickets->LimitOwner(VALUE => 'Nobody');
-
-$Tickets->LimitType(VALUE => 'reminder');
-$Tickets->LimitType(VALUE => 'ticket');
-
-$Tickets->LimitDue(OPERATOR => ">=", VALUE => $begin->strftime("%F") );
-$Tickets->LimitDue(OPERATOR => "<=", VALUE => $end->strftime("%F") );
-
-my %Tickets;
-
-while ( my $Ticket = $Tickets->Next()) {
-  # if reminder, check it's refering to a ticket
-  push @{ $Tickets{ RTx::Calendar::LocalDate($Ticket->DueObj->Unix) } }, $Ticket
-    unless $Ticket->Type eq 'reminder' and not $Ticket->RefersTo->First;
+if ( my $Search = RTx::Calendar::SearchDefaultCalendar($session{CurrentUser}) ) {
+  $Format = $Search->SubValue('Format');
+  $Query = $Search->SubValue('Query');
 }
+
+# we search all date types in Format string
+my @Dates = grep { $Format =~ m/__${_}(Relative)?__/ } @DateTypes;
+
+# used to display or not a date in Element/CalendarEvent
+my %DateTypes = map { $_ => 1 } @Dates;
+
+$Query .= RTx::Calendar::DatesClauses(\@Dates, $begin->strftime("%F"), $end->strftime("%F"));
+
+# print STDERR $Query, "\n";
+
+my %Tickets = RTx::Calendar::FindTickets($session{'CurrentUser'}, $Query, \@Dates);
 
 </%INIT>

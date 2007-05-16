@@ -1,0 +1,693 @@
+----------------------------------------------------------------------
+r14446:  nc | 2007-05-15 00:28:46 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+
+add some todo for the next round
+----------------------------------------------------------------------
+r14442:  nc | 2007-05-14 23:59:59 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+* add default query for Calendar.html and the portlet
+* use Format to display dates
+* add documentation for new things
+----------------------------------------------------------------------
+r14441:  nc | 2007-05-14 21:30:35 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+bug
+----------------------------------------------------------------------
+r14440:  nc | 2007-05-14 21:18:49 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+
+use FromSQL, use some functions
+----------------------------------------------------------------------
+r14438:  nc | 2007-05-14 01:43:49 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+* use FromSQL instead of Limit* to find tickets
+* add a function that returns a hash of ticket indexed by date in Calendar.pm
+clean some things
+----------------------------------------------------------------------
+r14425:  nc | 2007-05-11 02:38:58 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/TODO
+
+TODO
+----------------------------------------------------------------------
+r14424:  nc | 2007-05-11 02:38:23 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+add a complete fixme
+----------------------------------------------------------------------
+r14422:  nc | 2007-05-11 02:34:31 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  D  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/arrow_bw.png
+  D  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/arrow_from.png
+  D  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/arrow_to.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/created.png (from /local/rt/RTx-Calendar/trunk/html/NoAuth/images/arrow_from.png:13820)
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/created_due.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/due.png (from /local/rt/RTx-Calendar/trunk/html/NoAuth/images/arrow_to.png:14412)
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/starts_due.png
+  D  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/startsdue.png
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+change icons names
+----------------------------------------------------------------------
+r14420:  nc | 2007-05-11 02:23:32 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+
+template bug
+----------------------------------------------------------------------
+r14412:  nc | 2007-05-11 02:19:20 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/arrow_to.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/resolved.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/started.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/starts.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/startsdue.png
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/updated.png
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+ r14410@gaspard:  nc | 2007-05-11 02:19:09 +0200
+ add display date type with query format string
+
+----------------------------------------------------------------------
+r14411:  nc | 2007-05-11 02:19:19 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/IDEA
+
+ r14409@gaspard:  nc | 2007-05-11 02:16:09 +0200
+ add icons idea
+
+----------------------------------------------------------------------
+r14386:  nc | 2007-05-09 03:47:38 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/IDEA
+
+add chaka idea
+----------------------------------------------------------------------
+r14311:  nc | 2007-05-08 13:36:36 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+minor
+----------------------------------------------------------------------
+r14289:  nc | 2007-05-08 13:25:54 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+add due date limits on Query
+----------------------------------------------------------------------
+r14283:  nc | 2007-05-08 12:37:54 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/CalendarFeed
+
+find a bug in the default feed handling : always use UserObj to store and retrieve ICalURL attribute
+----------------------------------------------------------------------
+r14282:  nc | 2007-05-08 11:50:44 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+
+minor
+----------------------------------------------------------------------
+r14281:  nc | 2007-05-08 11:40:47 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+* automatic README generation
+* no longer use __PrivacyObjects
+* add prerequistes modules in README
+----------------------------------------------------------------------
+r14203:  nc | 2007-04-25 00:29:03 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/CalendarFeed
+
+minor
+----------------------------------------------------------------------
+r14185:  nc | 2007-04-22 16:50:32 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+typo and change upgrade section
+----------------------------------------------------------------------
+r14167:  nc | 2007-04-22 15:33:50 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+
+minor change
+----------------------------------------------------------------------
+r14166:  nc | 2007-04-22 15:25:26 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+
+last changes before release
+----------------------------------------------------------------------
+r14165:  nc | 2007-04-22 15:23:58 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/css/calendar.css
+
+change font size
+----------------------------------------------------------------------
+r14164:  nc | 2007-04-22 15:23:37 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+add a link to preferences
+----------------------------------------------------------------------
+r14163:  nc | 2007-04-22 15:04:08 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST.SKIP
+
+minor
+----------------------------------------------------------------------
+r14162:  nc | 2007-04-22 15:03:59 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+add some doc
+----------------------------------------------------------------------
+r14161:  nc | 2007-04-22 15:03:13 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+
+add a small help
+----------------------------------------------------------------------
+r14158:  nc | 2007-04-22 14:13:38 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+
+minor
+----------------------------------------------------------------------
+r14155:  nc | 2007-04-22 14:06:36 +0200
+Changed paths:
+  D  /local/rt/RTx-Calendar/trunk/MANIFEST
+
+remove manifest from svn
+----------------------------------------------------------------------
+r14154:  nc | 2007-04-22 13:47:45 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  D  /local/rt/RTx-Calendar/trunk/META.yml
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/css/calendar.css
+
+remove inc from svn
+----------------------------------------------------------------------
+r14153:  nc | 2007-04-22 13:47:08 +0200
+Changed paths:
+  D  /local/rt/RTx-Calendar/trunk/inc
+
+remove inc from svn
+----------------------------------------------------------------------
+r14133:  nc | 2007-04-22 03:04:10 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/CalendarFeed
+
+minor change
+----------------------------------------------------------------------
+r14132:  nc | 2007-04-22 02:50:28 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/CalendarFeed
+
+add title level and change title
+----------------------------------------------------------------------
+r14131:  nc | 2007-04-22 02:28:45 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/CalendarFeed
+
+cosmetic title change
+----------------------------------------------------------------------
+r14130:  nc | 2007-04-22 02:17:16 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+same bug in portlet and bug in calling LocalDate
+----------------------------------------------------------------------
+r14129:  nc | 2007-04-22 02:05:59 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+add LocalDate in pm. just test reminder or not for icon in calendar
+----------------------------------------------------------------------
+r14125:  nc | 2007-04-22 01:51:44 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+fix gmtime problem in ticket display
+----------------------------------------------------------------------
+r14124:  nc | 2007-04-22 01:34:32 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+use a hash with date keys instead of greping. better date
+----------------------------------------------------------------------
+r14123:  nc | 2007-04-22 00:48:03 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+better reminder's handling
+----------------------------------------------------------------------
+r14113:  nc | 2007-04-17 15:40:10 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+add requires in Makefile.PL
+----------------------------------------------------------------------
+r14099:  nc | 2007-04-15 12:16:26 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+how to delete old files
+----------------------------------------------------------------------
+r14098:  nc | 2007-04-15 11:52:47 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/inc/Module/Install/RTx.pm
+
+install Calendar in local
+----------------------------------------------------------------------
+r14097:  nc | 2007-04-15 11:52:34 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+
+add a small help message
+----------------------------------------------------------------------
+r14096:  nc | 2007-04-14 20:58:48 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  A  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/CalendarFeed (from /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/EditURL:14082)
+  D  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/EditURL
+
+better name for EditURL
+----------------------------------------------------------------------
+r14084:  nc | 2007-04-14 20:37:44 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+ r13989@gaspard:  nc | 2007-04-14 19:53:44 +0200
+ minor changes
+
+----------------------------------------------------------------------
+r14083:  nc | 2007-04-14 20:37:43 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+ r13988@gaspard:  nc | 2007-04-14 19:53:20 +0200
+ disable created events for the moment
+
+----------------------------------------------------------------------
+r14082:  nc | 2007-04-14 20:37:43 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/EditURL
+
+ r13987@gaspard:  nc | 2007-04-14 19:52:24 +0200
+ Change buttons name
+
+----------------------------------------------------------------------
+r14081:  nc | 2007-04-14 20:37:42 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/images/reminder.png
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+ r13986@gaspard:  nc | 2007-04-14 18:11:54 +0200
+ add reminders in default calendars and feeds
+
+----------------------------------------------------------------------
+r14080:  nc | 2007-04-14 20:37:42 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/EditURL
+
+ r13985@gaspard:  nc | 2007-04-14 16:39:44 +0200
+ add query text to feed description
+
+----------------------------------------------------------------------
+r14079:  nc | 2007-04-14 20:37:41 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  A  /local/rt/RTx-Calendar/trunk/html/Elements/CalendarEvent
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+ r13984@gaspard:  nc | 2007-04-14 16:32:45 +0200
+ extract Events in /Elements/CalendarEvent
+
+----------------------------------------------------------------------
+r14078:  nc | 2007-04-14 20:37:41 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+ r13983@gaspard:  nc | 2007-04-14 15:57:31 +0200
+ order Tickets by date
+
+----------------------------------------------------------------------
+r14077:  nc | 2007-04-14 20:37:40 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+
+ r13982@gaspard:  nc | 2007-04-14 15:42:59 +0200
+ add some error logging
+
+----------------------------------------------------------------------
+r14076:  nc | 2007-04-14 20:37:40 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+
+ r13981@gaspard:  nc | 2007-04-14 15:01:22 +0200
+ find a bug
+
+----------------------------------------------------------------------
+r14075:  nc | 2007-04-14 20:37:40 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST.SKIP
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/EditURL
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+ r13980@gaspard:  nc | 2007-04-14 14:48:11 +0200
+ * verify use rights before loadind saved searches
+ * update doc
+ * change some text
+
+----------------------------------------------------------------------
+r14074:  nc | 2007-04-14 20:37:39 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/IDEA
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  M  /local/rt/RTx-Calendar/trunk/META.yml
+  M  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/User/Elements/Tabs/Default
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+  D  /local/rt/RTx-Calendar/trunk/html/NoAuth/Ical.ics
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/css/calendar.css
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+  A  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements
+  A  /local/rt/RTx-Calendar/trunk/html/Prefs/Elements/EditURL
+
+ r13979@gaspard:  nc | 2007-04-14 13:29:58 +0200
+ * add ical feed for each search with a dhandler (and delete old implementation)
+ * use more /Elements
+ * complete CHANGES
+
+----------------------------------------------------------------------
+r13978:  nc | 2007-04-13 00:01:49 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  D  /local/rt/RTx-Calendar/trunk/README
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+ r13966@gaspard:  nc | 2007-04-12 23:53:38 +0200
+ update doc and use pod2readme to generate README
+
+----------------------------------------------------------------------
+r13977:  nc | 2007-04-13 00:01:49 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+ r13965@gaspard:  nc | 2007-04-12 23:25:33 +0200
+ show nobody and owner ticket by default. Put month navigation at bottom too
+
+----------------------------------------------------------------------
+r13976:  nc | 2007-04-13 00:01:48 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  M  /local/rt/RTx-Calendar/trunk/README
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Ticket (from /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools:13969)
+  M  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Ticket/Elements/Tabs/Default
+  D  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  A  /local/rt/RTx-Calendar/trunk/html/Search (from /local/rt/RTx-Calendar/trunk/html/Tools:13972)
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+  D  /local/rt/RTx-Calendar/trunk/html/Tools
+
+ r13964@gaspard:  nc | 2007-04-12 22:52:49 +0200
+ move Calendar from Tools to Search
+
+----------------------------------------------------------------------
+r13975:  nc | 2007-04-13 00:01:47 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  A  /local/rt/RTx-Calendar/trunk/CHANGES
+  A  /local/rt/RTx-Calendar/trunk/MANIFEST.SKIP
+
+ r13963@gaspard:  nc | 2007-04-12 22:44:58 +0200
+ add some files
+
+----------------------------------------------------------------------
+r13974:  nc | 2007-04-13 00:01:47 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+
+ r13947@gaspard:  nc | 2007-04-11 23:32:48 +0200
+ only use PrivateUrl for the moment. Must look at RT::Attribute to store Magic Number
+
+----------------------------------------------------------------------
+r13973:  nc | 2007-04-13 00:01:47 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/IDEA
+
+ r13946@gaspard:  nc | 2007-04-11 23:31:56 +0200
+ add ideas
+
+----------------------------------------------------------------------
+r13972:  nc | 2007-04-13 00:01:46 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  A  /local/rt/RTx-Calendar/trunk/IDEA
+
+ r13876@gaspard:  nc | 2007-04-10 01:18:07 +0200
+ Add some ideas and comment
+
+----------------------------------------------------------------------
+r13971:  nc | 2007-04-13 00:01:46 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Elements/Header/Head
+
+ r13875@gaspard:  nc | 2007-04-10 01:17:53 +0200
+ line feed
+
+----------------------------------------------------------------------
+r13970:  nc | 2007-04-13 00:01:46 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/html/Tools/Calendar.html
+
+ r13874@gaspard:  nc | 2007-04-10 01:16:24 +0200
+ space
+
+----------------------------------------------------------------------
+r13969:  nc | 2007-04-13 00:01:45 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/User
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/User/Elements
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/User/Elements/Tabs
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/User/Elements/Tabs/Default
+
+ r13873@gaspard:  nc | 2007-04-10 01:15:47 +0200
+ add a menu (doesn't work well)
+
+----------------------------------------------------------------------
+r13968:  nc | 2007-04-13 00:01:45 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  A  /local/rt/RTx-Calendar/trunk/html/Prefs
+  A  /local/rt/RTx-Calendar/trunk/html/Prefs/Calendar.html
+
+ r13872@gaspard:  nc | 2007-04-10 01:15:14 +0200
+ 1st implementation of interface manager
+
+----------------------------------------------------------------------
+r13967:  nc | 2007-04-13 00:01:45 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  A  /local/rt/RTx-Calendar/trunk/html/NoAuth/Ical.ics
+
+ r13871@gaspard:  nc | 2007-04-10 01:14:39 +0200
+ 1rt implementation
+
+----------------------------------------------------------------------
+r13834:  nc | 2007-04-07 18:47:46 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/META.yml
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+first public release 0.02
+----------------------------------------------------------------------
+r13833:  nc | 2007-04-07 18:44:51 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  M  /local/rt/RTx-Calendar/trunk/README
+  M  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+change doc
+----------------------------------------------------------------------
+r13832:  nc | 2007-04-07 18:29:39 +0200
+Changed paths:
+  D  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Elements/Tabs
+  M  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools/Elements/Tabs/Default
+
+Place calendar in the submenu
+----------------------------------------------------------------------
+r13831:  nc | 2007-04-07 18:28:04 +0200
+Changed paths:
+  D  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Elements/Tabs/Default
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools/Elements/Tabs/Default (from /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Elements/Tabs/Default:13821)
+
+Place calendar in the submenu
+----------------------------------------------------------------------
+r13830:  nc | 2007-04-07 18:27:17 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools/Elements
+  A  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Tools/Elements/Tabs
+
+add Tabs dir
+----------------------------------------------------------------------
+r13829:  nc | 2007-04-07 15:56:20 +0200
+Changed paths:
+  A  /local/rt/RTx-Calendar/trunk/html/Elements
+  A  /local/rt/RTx-Calendar/trunk/html/Elements/MyCalendar
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/css/calendar.css
+  M  /local/rt/RTx-Calendar/trunk/html/Tools/Calendar.html
+
+add MyCalendar
+----------------------------------------------------------------------
+r13828:  nc | 2007-04-07 05:05:29 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Tools/Calendar.html
+
+checkbox to see resolved tickets
+----------------------------------------------------------------------
+r13827:  nc | 2007-04-07 04:52:56 +0200
+Changed paths:
+   M /local/rt/RTx-Calendar/trunk
+  M  /local/rt/RTx-Calendar/trunk/META.yml
+  M  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/html/Tools/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+ r13826@gaspard:  nc | 2007-04-07 04:51:34 +0200
+ use datetime
+
+----------------------------------------------------------------------
+r13822:  nc | 2007-04-07 03:35:55 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Tools/Calendar.html
+
+cosmetic on subject and argument passing
+----------------------------------------------------------------------
+r13821:  nc | 2007-04-07 03:23:02 +0200
+Changed paths:
+  D  /local/rt/RTx-Calendar/trunk/Changes
+  M  /local/rt/RTx-Calendar/trunk/MANIFEST
+  M  /local/rt/RTx-Calendar/trunk/META.yml
+  M  /local/rt/RTx-Calendar/trunk/README
+  A  /local/rt/RTx-Calendar/trunk/TODO
+  M  /local/rt/RTx-Calendar/trunk/html/Callbacks/RTx-Calendar/Elements/Tabs/Default
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/css/calendar.css
+  M  /local/rt/RTx-Calendar/trunk/html/Tools/Calendar.html
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+* change doc
+* change css
+* better date form
+* cosmetics changes
+----------------------------------------------------------------------
+r13820:  nc | 2007-04-06 21:11:07 +0200
+Changed paths:
+  D  /local/rt/RTx-Calendar/Changes
+  D  /local/rt/RTx-Calendar/MANIFEST
+  D  /local/rt/RTx-Calendar/META.yml
+  D  /local/rt/RTx-Calendar/Makefile.PL
+  D  /local/rt/RTx-Calendar/README
+  D  /local/rt/RTx-Calendar/html
+  D  /local/rt/RTx-Calendar/inc
+  D  /local/rt/RTx-Calendar/lib
+  D  /local/rt/RTx-Calendar/po
+  D  /local/rt/RTx-Calendar/t
+  A  /local/rt/RTx-Calendar/trunk/Changes (from /local/rt/RTx-Calendar/Changes:13815)
+  A  /local/rt/RTx-Calendar/trunk/MANIFEST (from /local/rt/RTx-Calendar/MANIFEST:13818)
+  A  /local/rt/RTx-Calendar/trunk/META.yml (from /local/rt/RTx-Calendar/META.yml:13816)
+  A  /local/rt/RTx-Calendar/trunk/Makefile.PL (from /local/rt/RTx-Calendar/Makefile.PL:13815)
+  A  /local/rt/RTx-Calendar/trunk/README (from /local/rt/RTx-Calendar/README:13815)
+  A  /local/rt/RTx-Calendar/trunk/html (from /local/rt/RTx-Calendar/html:13818)
+  A  /local/rt/RTx-Calendar/trunk/inc (from /local/rt/RTx-Calendar/inc:13815)
+  A  /local/rt/RTx-Calendar/trunk/lib (from /local/rt/RTx-Calendar/lib:13818)
+  A  /local/rt/RTx-Calendar/trunk/po (from /local/rt/RTx-Calendar/po:13815)
+  A  /local/rt/RTx-Calendar/trunk/t (from /local/rt/RTx-Calendar/t:13817)
+
+move in trunk
+----------------------------------------------------------------------
+r13819:  nc | 2007-04-06 21:10:20 +0200
+Changed paths:
+  A  /local/rt/RTx-Calendar/trunk
+
+add trunk
+----------------------------------------------------------------------

@@ -11,3 +11,10 @@ requires 'Data::ICal'    => 0;
 requires 'Date::ICal'    => 0;
 
 WriteAll();
+
+sub MY::postamble {
+    package MY;
+    "\npredist: all\n" .
+    "\tpod2readme  lib/RTx/Calendar.pm > README\n".
+    "\tsvk log -v  > ChangeLog\n"
+}
