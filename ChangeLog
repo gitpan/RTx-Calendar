@@ -1,4 +1,29 @@
 ----------------------------------------------------------------------
+r17415:  nc | 2008-03-24 19:41:56 +0100
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+
+add changes for 0.05
+----------------------------------------------------------------------
+r17414:  nc | 2008-03-24 19:41:21 +0100
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/NoAuth/Calendar/dhandler
+
+fix a bug when showing reminders
+----------------------------------------------------------------------
+r14481:  nc | 2007-05-17 12:03:18 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/html/Search/Calendar.html
+
+forgot to disable debug output
+----------------------------------------------------------------------
+r14473:  nc | 2007-05-16 22:37:09 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+change release number
+----------------------------------------------------------------------
 r14446:  nc | 2007-05-15 00:28:46 +0200
 Changed paths:
   M  /local/rt/RTx-Calendar/trunk/TODO
