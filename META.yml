@@ -19,4 +19,4 @@ requires:
   Date::ICal: 0
   DateTime: 0
   DateTime::Set: 0
-version: 0.05
+version: 0.06

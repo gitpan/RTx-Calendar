@@ -8,7 +8,7 @@ no warnings 'once';
 
 use Module::Install::Base;
 use base 'Module::Install::Base';
-our $VERSION = '0.21';
+our $VERSION = '0.23';
 
 use FindBin;
 use File::Glob     ();
@@ -53,7 +53,9 @@ sub RTx {
     }
 
     my $lib_path = File::Basename::dirname( $INC{'RT.pm'} );
+    my $local_lib_path = "$RT::LocalPath/lib";
     print "Using RT configuration from $INC{'RT.pm'}:\n";
+    unshift @INC, "$RT::LocalPath/lib" if $RT::LocalPath;
 
     $RT::LocalVarPath  ||= $RT::VarPath;
     $RT::LocalPoPath   ||= $RT::LocalLexiconPath;
@@ -70,7 +72,7 @@ sub RTx {
 
     foreach (qw(bin etc html po sbin var)) {
         next unless -d "$FindBin::Bin/$_";
-        next if %subdirs and !$subdirs{$_};
+        next if keys %subdirs and !$subdirs{$_};
         $self->no_index( directory => $_ );
 
         no strict 'refs';
@@ -79,7 +81,7 @@ sub RTx {
     }
 
     $path{$_} .= "/$name" for grep $path{$_}, qw(etc po var);
-    $path{lib} = "$RT::LocalPath/lib" unless %subdirs and !$subdirs{'lib'};
+    $path{lib} = "$RT::LocalPath/lib" unless keys %subdirs and !$subdirs{'lib'};
 
     # If we're running on RT 3.8 with plugin support, we really wany
     # to install libs, mason templates and po files into plugin specific
@@ -124,10 +126,10 @@ install ::
         $self->load('RTxFactory');
         $self->postamble(<< ".");
 factory ::
-\t\$(NOECHO) \$(PERL) -Ilib -I"$lib_path" -Minc::Module::Install -e"RTxFactory(qw($RTx $name))"
+\t\$(NOECHO) \$(PERL) -Ilib -I"$local_lib_path" -I"$lib_path" -Minc::Module::Install -e"RTxFactory(qw($RTx $name))"
 
 dropdb ::
-\t\$(NOECHO) \$(PERL) -Ilib -I"$lib_path" -Minc::Module::Install -e"RTxFactory(qw($RTx $name drop))"
+\t\$(NOECHO) \$(PERL) -Ilib -I"$local_lib_path" -I"$lib_path" -Minc::Module::Install -e"RTxFactory(qw($RTx $name drop))"
 
 .
     }
@@ -152,13 +154,13 @@ dropdb ::
         print "For first-time installation, type 'make initdb'.\n";
         my $initdb = '';
         $initdb .= <<"." if $has_etc{schema};
-\t\$(NOECHO) \$(PERL) -Ilib -I"$lib_path" -Minc::Module::Install -e"RTxInitDB(qw(schema))"
+\t\$(NOECHO) \$(PERL) -Ilib -I"$local_lib_path" -I"$lib_path" -Minc::Module::Install -e"RTxInitDB(qw(schema))"
 .
         $initdb .= <<"." if $has_etc{acl};
-\t\$(NOECHO) \$(PERL) -Ilib -I"$lib_path" -Minc::Module::Install -e"RTxInitDB(qw(acl))"
+\t\$(NOECHO) \$(PERL) -Ilib -I"$local_lib_path" -I"$lib_path" -Minc::Module::Install -e"RTxInitDB(qw(acl))"
 .
         $initdb .= <<"." if $has_etc{initialdata};
-\t\$(NOECHO) \$(PERL) -Ilib -I"$lib_path" -Minc::Module::Install -e"RTxInitDB(qw(insert))"
+\t\$(NOECHO) \$(PERL) -Ilib -I"$local_lib_path" -I"$lib_path" -Minc::Module::Install -e"RTxInitDB(qw(insert))"
 .
         $self->postamble("initdb ::\n$initdb\n");
         $self->postamble("initialize-database ::\n$initdb\n");
@@ -178,4 +180,4 @@ sub RTxInit {
 
 __END__
 
-#line 279
+#line 281

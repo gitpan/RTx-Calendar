@@ -1,4 +1,17 @@
 ----------------------------------------------------------------------
+r18512:  nc | 2008-08-31 18:38:06 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/CHANGES
+  M  /local/rt/RTx-Calendar/trunk/lib/RTx/Calendar.pm
+
+add changes for 0.06 and bump version number
+----------------------------------------------------------------------
+r18511:  nc | 2008-08-31 18:24:02 +0200
+Changed paths:
+  M  /local/rt/RTx-Calendar/trunk/Makefile.PL
+
+change RTx name for rt 3.8 compatibility
+----------------------------------------------------------------------
 r17415:  nc | 2008-03-24 19:41:56 +0100
 Changed paths:
   M  /local/rt/RTx-Calendar/trunk/CHANGES
