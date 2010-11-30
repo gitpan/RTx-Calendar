@@ -4,7 +4,7 @@ use strict;
 use DateTime;
 use DateTime::Set;
 
-our $VERSION = "0.07";
+our $VERSION = "0.08";
 
 sub FirstMonday {
     my ($year, $month) = (shift, shift);
@@ -45,7 +45,7 @@ sub DatesClauses {
     my $clauses = "";
 
     my @DateClauses = map {
-	"($_ >= '" . $begin . "' AND $_ <= '" . $end . "')"
+	"($_ >= '" . $begin . " 00:00:00' AND $_ <= '" . $end . " 23:59:59')"
     } @$Dates;
     $clauses  .= " AND " . " ( " . join(" OR ", @DateClauses) . " ) "
 	if @DateClauses;
@@ -79,9 +79,9 @@ sub FindTickets {
     return %Tickets;
 }
 
-# 
+#
 # Take a user object and return the search with Description "calendar" if it exists
-# 
+#
 sub SearchDefaultCalendar {
     my $CurrentUser = shift;
     my $Description = "calendar";
@@ -125,9 +125,6 @@ There's a portlet to put on your home page (see Prefs/MyRT.html)
 You can also enable ics (ICal) feeds for your default calendar and all
 your private searches in Prefs/Calendar.html. Authentication is magic
 number based so that you can give those feeds to other people.
-
-You can find screenshots on
-http://gaspard.mine.nu/dotclear/index.php?tag/rtx-calendar
 
 =head1 INSTALLATION
 
@@ -222,7 +219,7 @@ Idea borrowed from redmine's calendar (Thanks Jean-Philippe).
 
 Copyright 2007 by Nicolas Chuche E<lt>nchuche@barna.beE<gt>
 
-This program is free software; you can redistribute it and/or 
+This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
 
 See L<http://www.perl.com/perl/misc/Artistic.html>
