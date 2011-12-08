@@ -1,0 +1,50 @@
+{
+   "abstract" : "Calendar view",
+   "author" : [
+      "Nicolas Chuche <nchuche@barna.be>",
+      "Nicolas Chuche <nchuche@barna.be>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Module::Install version 1.01, CPAN::Meta::Converter version 2.112150",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "RTx-Calendar",
+   "no_index" : {
+      "directory" : [
+         "html",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.42"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.42"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Data::ICal" : 0,
+            "Date::ICal" : 0,
+            "DateTime" : 0,
+            "DateTime::Set" : 0
+         }
+      }
+   },
+   "release_status" : "testing",
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ]
+   },
+   "version" : "0.08_01"
+}
