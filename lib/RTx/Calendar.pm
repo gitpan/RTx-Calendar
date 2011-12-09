@@ -4,7 +4,7 @@ use strict;
 use DateTime;
 use DateTime::Set;
 
-our $VERSION = "0.08_01";
+our $VERSION = "0.08_02";
 
 sub FirstMonday {
     my ($year, $month) = (shift, shift);
@@ -107,7 +107,6 @@ package RT::Interface::Web::Menu;
 # shim this in so I don't copy the code.
 unless (RT::Interface::Web::Menu->can('add_after')) {
         *RT::Interface::Web::Menu::add_after = sub {
-            warn "Running from extension";
             my $self = shift;
             my $parent = $self->parent;
             my $sort_order;
@@ -132,10 +131,6 @@ __END__
 =head1 NAME
 
 RTx::Calendar - Calendar for RT due tasks
-
-=head1 VERSION
-
-This document describes version 0.07 of RTx::Calendar
 
 =head1 DESCRIPTION
 
