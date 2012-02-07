@@ -4,7 +4,7 @@ use strict;
 use DateTime;
 use DateTime::Set;
 
-our $VERSION = "0.10";
+our $VERSION = "0.11";
 
 sub FirstMonday {
     my ($year, $month) = (shift, shift);
@@ -103,7 +103,7 @@ sub SearchDefaultCalendar {
 
 package RT::Interface::Web::Menu;
 
-# we should get an add_after method in 4.0.5, but until then
+# we should get an add_after method in 4.0.6 (hopefully), but until then
 # shim this in so I don't copy the code.
 unless (RT::Interface::Web::Menu->can('add_after')) {
         *RT::Interface::Web::Menu::add_after = sub {
