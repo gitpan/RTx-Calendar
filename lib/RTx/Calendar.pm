@@ -4,33 +4,32 @@ use strict;
 use DateTime;
 use DateTime::Set;
 
-our $VERSION = "0.17";
+our $VERSION = "0.18";
 
-RT->AddStyleSheets('calendar.css')
-    if RT->can('AddStyleSheets');
+RT->AddStyleSheets('calendar.css');
 
-sub FirstMonday {
-    my ($year, $month) = (shift, shift);
+sub FirstDay {
+    my ($year, $month, $matchday) = @_;
     my $set = DateTime::Set->from_recurrence(
 	next => sub { $_[0]->truncate( to => 'day' )->subtract( days => 1 ) }
     );
 
     my $day = DateTime->new( year => $year, month => $month );
 
-    $day = $set->next($day) while $day->day_of_week != 1;
+    $day = $set->next($day) while $day->day_of_week != $matchday;
     $day;
 
 }
 
-sub LastSunday {
-    my ($year, $month) = (shift, shift);
+sub LastDay {
+    my ($year, $month, $matchday) = @_;
     my $set = DateTime::Set->from_recurrence(
 	next => sub { $_[0]->truncate( to => 'day' )->add( days => 1 ) }
     );
 
     my $day = DateTime->last_day_of_month( year => $year, month => $month );
 
-    $day = $set->next($day) while $day->day_of_week != 7;
+    $day = $set->next($day) while $day->day_of_week != $matchday;
     $day;
 }
 
@@ -236,7 +235,7 @@ Idea borrowed from redmine's calendar (Thanks Jean-Philippe).
 
 Copyright 2007-2009 by Nicolas Chuche E<lt>nchuche@barna.beE<gt>
 
-Copyright 2010-2012 by Best Practical Solutions.
+Copyright 2010-2014 by Best Practical Solutions.
 
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

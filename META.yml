@@ -19,6 +19,7 @@ no_index:
   directory:
     - html
     - inc
+    - static
   package:
     - RT::Interface::Web::Menu
 requires:
@@ -28,4 +29,4 @@ requires:
   Digest::SHA: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.17
+version: 0.18
