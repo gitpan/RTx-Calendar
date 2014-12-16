@@ -1,0 +1,58 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 93b5edfdbc96aaee55700e78655e4bdb28f4a08d CHANGES
+SHA1 069fb1d0efaa32ea73dde062044517d70f6b329f MANIFEST
+SHA1 a1193dbfbe36ed50f262c026646ab88e91b6b62e META.yml
+SHA1 ec583a4b786f31a5339836bd5cd89b948d5bfd8c Makefile.PL
+SHA1 e591584e85f8ca5539df93b048c6a3b74ec9dd68 README
+SHA1 4259a8cc84588a6c02d448172e281f74c29cfca9 TODO
+SHA1 c4c2273ca8a65f5f23689f5425d2cf00fcb7d718 html/Callbacks/RTx-Calendar/Elements/Tabs/Privileged
+SHA1 550731466ec0dfafb7da6aa92381acda57f353ae html/Elements/CalendarEvent
+SHA1 cba245b1e12d22745770f9c020f4cb0923915f2a html/Elements/MyCalendar
+SHA1 3f2989981d24accd86c199540ef27fc0df0eefcd html/Search/Calendar.html
+SHA1 9b5001bfa9cf8607b3b3935284d9253e0391c9f1 inc/Module/Install.pm
+SHA1 cab0e564f9bdf658535f683aa197157e06d0dcea inc/Module/Install/Base.pm
+SHA1 a1559b5b3b40f68efbbd256f4fef85970891b3ae inc/Module/Install/Can.pm
+SHA1 f15c1ba85f6d52e70c48c64bf0752c90a4ad66f9 inc/Module/Install/Fetch.pm
+SHA1 d44d96acd20793306dd201030c688e2a7d3083ee inc/Module/Install/Include.pm
+SHA1 eb48df8bafd07c6a862126d9b274df42b4395742 inc/Module/Install/Makefile.pm
+SHA1 95c73873c6c3cb7024614c225c53863e1e90c134 inc/Module/Install/Metadata.pm
+SHA1 6e010ba20a9d0ae23d8d0ff516868c1e571c2d44 inc/Module/Install/RTx.pm
+SHA1 3fdf4c0cffdb1a2e23e5cd26bf95be553f1f9590 inc/Module/Install/RTx/Runtime.pm
+SHA1 79f5b4199f622e8b05aac266b0c39f6a85bb303f inc/Module/Install/ReadmeFromPod.pm
+SHA1 f8b2ae3386f6ba26c33408968a953d450842eade inc/Module/Install/Win32.pm
+SHA1 f302bc703d76299cff243e5b44cecd61aac27b76 inc/Module/Install/WriteAll.pm
+SHA1 4e09b598c2626e08cec2bed5e981492fa9e90967 inc/YAML/Tiny.pm
+SHA1 034d0f3a7401dae4be3eee279258181f51a4ad81 inc/unicore/Name.pm
+SHA1 6e4ad3f34fd64e02ad62d51719b6860204c63476 lib/RTx/Calendar.pm
+SHA1 b2d9bba7a2668c1406eae6ab2c10d6aecf4f6e30 static/css/calendar.css
+SHA1 bd37038a23410e1b33f52bc47c26760ead317962 static/images/created.png
+SHA1 0e33b8c5c7b5f141301edbec9983fd0d727d650d static/images/created_due.png
+SHA1 7b320f37a1253b7e0fd90abf84f5740150f3c8e9 static/images/due.png
+SHA1 e34a63899ecdf6c49fc3fdb59a9769dc7ef04427 static/images/reminder.png
+SHA1 c11078b7f675e1af5dd9237840bcf5e3fa05df9d static/images/resolved.png
+SHA1 de6e66e9dfe0f780b8a28790264835727217cca5 static/images/started.png
+SHA1 0ad059771e0d96eaaa96e90883f4a375d67bcabd static/images/starts.png
+SHA1 b23cfcce3427f706f0dc6f5ff5909ee8a1c41658 static/images/starts_due.png
+SHA1 d123dfa126e3a8535175c273419aaa38398c9b7b static/images/updated.png
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAlSPjDQACgkQMflWJZZAbqAilACdG6njy+zYe/+L2VvYtOdiFUCV
+0cQAnRPtIeUbgIAZJN2Sf5zVSXZYsjY8
+=i6tC
+-----END PGP SIGNATURE-----
